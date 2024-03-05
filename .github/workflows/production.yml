@@ -17,8 +17,17 @@ jobs:
         with:
           version: 8
 
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node ENV
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          check-latest: true
+
       - name: Install depedencies
-        run: pnpm install
+        run: pnpm install --only=prod
 
       - name: Running Unit Testing
         run: pnpm test
@@ -30,9 +39,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
-          script: |
-            cd ~/app/CICD
+          script: cd ~/apps/CICD
             git pull origin main
             git status
-            pnpm install --only=prod
             pm2 restart testingApp
