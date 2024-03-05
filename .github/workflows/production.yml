@@ -17,15 +17,6 @@ jobs:
         with:
           version: 8
 
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node ENV
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          check-latest: true
-
       - name: Install depedencies
         run: pnpm install
 
