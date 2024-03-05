@@ -31,7 +31,7 @@ jobs:
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |
-            cd ~/apps/CICD
+            cd ~/app/CICD
             git pull origin main
             git status
             pnpm install --only=prod
